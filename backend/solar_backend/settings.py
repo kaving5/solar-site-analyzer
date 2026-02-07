@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'corsheaders',
     'sites',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -71,6 +73,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'solar_backend.wsgi.application'
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",
+    "http://127.0.0.1:4200",
+]
+CORS_ALLOW_HEADERS = [
+    "authorization",
+    "content-type",
+    "x-requested-with",
+    "accept",
+    "origin",
+]
 
 
 # Database
