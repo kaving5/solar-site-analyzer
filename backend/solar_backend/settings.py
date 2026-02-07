@@ -78,10 +78,15 @@ WSGI_APPLICATION = 'solar_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'solar_site_analyzer',
+        'USER': 'solar_user',
+        'PASSWORD': 'solar_pass123',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
 
 
 # Password validation
