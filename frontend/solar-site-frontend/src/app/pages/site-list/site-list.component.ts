@@ -23,9 +23,10 @@ export class SiteListComponent implements OnInit {
 
   loadSites() {
     this.loading = true;
+  
     this.siteService.getAllSites().subscribe({
-      next: (res: any) => {
-        this.sites = res.data;
+      next: (sites) => {
+        this.sites = sites;      
         this.loading = false;
       },
       error: () => {
