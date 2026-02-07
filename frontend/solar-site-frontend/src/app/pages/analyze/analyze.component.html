@@ -1,0 +1,48 @@
+<h2>Analyze Sites</h2>
+
+<p>Adjust weights (total must be exactly <strong>1.0</strong>)</p>
+
+<div *ngFor="let key of weightKeys" style="margin-bottom: 8px;">
+  <label style="display:inline-block; width:140px;">
+    {{ key | titlecase }}
+  </label>
+
+  <input
+    type="number"
+    step="0.05"
+    min="0"
+    max="1"
+    [(ngModel)]="weights[key]"
+  />
+</div>
+
+<p>
+  <strong>Total Weight:</strong>
+  {{ totalWeight | number:'1.2-2' }}
+</p>
+
+<button
+  (click)="analyze()"
+  [disabled]="totalWeight !== 1 || loading"
+>
+  {{ loading ? 'Analyzing...' : 'Run Analysis' }}
+</button>
+
+<p *ngIf="errorMessage" style="color:red;">
+  {{ errorMessage }}
+</p>
+
+<hr />
+
+<h3 *ngIf="results.length">Analysis Results</h3>
+
+<table *ngIf="results.length" border="1" cellpadding="6">
+  <tr>
+    <th>Site</th>
+    <th>Total Score</th>
+  </tr>
+  <tr *ngFor="let r of results">
+    <td>{{ r.site_name }}</td>
+    <td>{{ r.total_score }}</td>
+  </tr>
+</table>

@@ -1,0 +1,20 @@
+<h2>Solar Sites</h2>
+
+<div *ngIf="loading">Loading...</div>
+
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+<table *ngIf="!loading && sites.length">
+  <tr>
+    <th>Name</th>
+    <th>Score</th>
+  </tr>
+<tr *ngFor="let site of sites">
+  <td>
+    <a [routerLink]="['/sites', site.id]">
+      {{ site.site_name }}
+    </a>
+  </td>
+  <td>{{ site.total_score }}</td>
+</tr>
+</table>

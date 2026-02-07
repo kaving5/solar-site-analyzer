@@ -1,0 +1,31 @@
+<h2>Site Details</h2>
+
+<div *ngIf="loading">Loading site details...</div>
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+<div *ngIf="site">
+
+  <h3>{{ site.site_name }}</h3>
+  <p><strong>Region:</strong> {{ site.region }}</p>
+  <p><strong>Land Type:</strong> {{ site.land_type }}</p>
+
+  <h4>Suitability Score</h4>
+  <p>
+    <strong>Total:</strong>
+    {{ site.total_score }} ({{ site.category }})
+  </p>
+
+  <h4>Score Breakdown</h4>
+  <ul>
+    <li>Solar: {{ site.scores.solar }}</li>
+    <li>Area: {{ site.scores.area }}</li>
+    <li>Grid Distance: {{ site.scores.grid }}</li>
+    <li>Slope: {{ site.scores.slope }}</li>
+    <li>Infrastructure: {{ site.scores.infrastructure }}</li>
+  </ul>
+
+  <h4>Location</h4>
+  <p>Latitude: {{ site.latitude }}</p>
+  <p>Longitude: {{ site.longitude }}</p>
+
+</div>
