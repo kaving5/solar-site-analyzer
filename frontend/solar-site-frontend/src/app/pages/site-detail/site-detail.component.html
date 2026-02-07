@@ -1,31 +1,62 @@
-<h2>Site Details</h2>
+<div class="page-wrapper">
+  <h2 class="page-title">Site Details</h2>
 
-<div *ngIf="loading">Loading site details...</div>
-<div *ngIf="errorMessage">{{ errorMessage }}</div>
+  <div *ngIf="loading" class="state loading">Loading site details…</div>
 
-<div *ngIf="site">
+  <div *ngIf="errorMessage" class="state error">
+    {{ errorMessage }}
+  </div>
 
-  <h3>{{ site.site_name }}</h3>
-  <p><strong>Region:</strong> {{ site.region }}</p>
-  <p><strong>Land Type:</strong> {{ site.land_type }}</p>
+  <div *ngIf="site" class="detail-container">
+    <!-- Header -->
+    <div class="header">
+      <h3>{{ site.site_name }}</h3>
+      <span
+        class="score-chip"
+        [ngClass]="{
+          excellent: site.total_score >= 80,
+          good: site.total_score >= 50 && site.total_score < 80,
+          poor: site.total_score < 50
+        }"
+      >
+        {{ site.total_score }} – {{ site.category }}
+      </span>
+    </div>
 
-  <h4>Suitability Score</h4>
-  <p>
-    <strong>Total:</strong>
-    {{ site.total_score }} ({{ site.category }})
-  </p>
+    <div class="info-grid">
+      <div><strong>Region:</strong> {{ site.region }}</div>
+      <div><strong>Land Type:</strong> {{ site.land_type }}</div>
+      <div><strong>Latitude:</strong> {{ site.latitude }}</div>
+      <div><strong>Longitude:</strong> {{ site.longitude }}</div>
+    </div>
 
-  <h4>Score Breakdown</h4>
-  <ul>
-    <li>Solar: {{ site.scores.solar }}</li>
-    <li>Area: {{ site.scores.area }}</li>
-    <li>Grid Distance: {{ site.scores.grid }}</li>
-    <li>Slope: {{ site.scores.slope }}</li>
-    <li>Infrastructure: {{ site.scores.infrastructure }}</li>
-  </ul>
+    <h4 class="section-title">Score Breakdown</h4>
 
-  <h4>Location</h4>
-  <p>Latitude: {{ site.latitude }}</p>
-  <p>Longitude: {{ site.longitude }}</p>
+    <div class="score-grid">
+      <div class="score-card">
+        <span>Solar</span>
+        <strong>{{ site.scores.solar | number : "1.1-1" }}</strong>
+      </div>
 
+      <div class="score-card">
+        <span>Area</span>
+        <strong>{{ site.scores.area | number : "1.1-1" }}</strong>
+      </div>
+
+      <div class="score-card">
+        <span>Grid</span>
+        <strong>{{ site.scores.grid | number : "1.1-1" }}</strong>
+      </div>
+
+      <div class="score-card">
+        <span>Slope</span>
+        <strong>{{ site.scores.slope | number : "1.1-1" }}</strong>
+      </div>
+
+      <div class="score-card">
+        <span>Infrastructure</span>
+        <strong>{{ site.scores.infrastructure | number : "1.1-1" }}</strong>
+      </div>
+    </div>
+  </div>
 </div>

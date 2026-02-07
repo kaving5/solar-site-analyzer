@@ -1,0 +1,104 @@
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+.page-title {
+    margin-bottom: 16px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #5e409e;
+  }
+  
+  /* Loading / Error states */
+  .state {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+  
+  .loading {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+  
+  .error {
+    background: rgba(255, 0, 0, 0.15);
+    color: #ffbdbd;
+  }
+  
+  /* Table container */
+  .site-table {
+    background: rgba(126, 25, 65, 0.91);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  /* Header */
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 18px;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.25);
+    color: #ddd;
+  }
+  
+  /* Rows */
+  .table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 18px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    color: #ffffff;
+  
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+  }
+  
+  .site-name {
+    font-weight: 500;
+  }
+  
+  /* Score badge */
+  .score-badge {
+    min-width: 64px;
+    text-align: center;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  
+  .excellent {
+    background: #2e7d32;
+    color: #ffffff;
+  }
+  
+  .good {
+    background: #f9a825;
+    color: #000000;
+  }
+  
+  .poor {
+    background: #c62828;
+    color: #ffffff;
+  }
+  
+  /* Mobile */
+  @media (max-width: 768px) {
+    .table-header,
+    .table-row {
+      padding: 12px;
+    }
+  
+    .page-title {
+      font-size: 20px;
+    }
+  }
+  

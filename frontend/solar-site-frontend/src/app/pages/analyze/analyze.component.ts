@@ -3,14 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AnalysisService } from '../../core/services/analysis.service';
 
-
+import { RouterModule } from '@angular/router';
 type WeightKey = 'solar' | 'area' | 'grid' | 'slope' | 'infrastructure';
 
 @Component({
   selector: 'app-analyze',
   standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './analyze.component.html'
+  imports: [CommonModule, FormsModule, RouterModule],
+  templateUrl: './analyze.component.html',
+  styleUrls :['./analyze.component.scss']
 })
 export class AnalyzeComponent {
 

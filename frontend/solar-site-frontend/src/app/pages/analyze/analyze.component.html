@@ -1,48 +1,68 @@
-<h2>Analyze Sites</h2>
+<div class="analyze-page">
+  <h2 class="page-title">Analyze Sites</h2>
 
-<p>Adjust weights (total must be exactly <strong>1.0</strong>)</p>
+  <p class="subtitle">
+    Adjust weights to reflect decision priorities
+    <br />
+    <small>(Total must be exactly <strong>1.0</strong>)</small>
+  </p>
 
-<div *ngFor="let key of weightKeys" style="margin-bottom: 8px;">
-  <label style="display:inline-block; width:140px;">
-    {{ key | titlecase }}
-  </label>
+  <!-- Weight Controls -->
+  <div class="weights-card">
 
-  <input
-    type="number"
-    step="0.05"
-    min="0"
-    max="1"
-    [(ngModel)]="weights[key]"
-  />
+    <div class="weight-row" *ngFor="let key of weightKeys">
+      <label>{{ key | titlecase }}</label>
+
+      <input
+        type="number"
+        step="0.05"
+        min="0"
+        max="1"
+        [(ngModel)]="weights[key]"
+      />
+    </div>
+
+    <div class="total-weight">
+      <span>Total Weight</span>
+      <strong
+        [ngClass]="{
+          valid: totalWeight === 1,
+          invalid: totalWeight !== 1
+        }"
+      >
+        {{ totalWeight | number:'1.2-2' }}
+      </strong>
+    </div>
+
+    <button
+      class="btn primary"
+      (click)="analyze()"
+      [disabled]="totalWeight !== 1 || loading"
+    >
+      {{ loading ? 'Analyzing…' : 'Run Analysis' }}
+    </button>
+
+    <p *ngIf="errorMessage" class="error-text">
+      {{ errorMessage }}
+    </p>
+
+  </div>
+
+  <!-- Results -->
+  <div *ngIf="results.length" class="results-card">
+
+    <h3>Analysis Results</h3>
+
+    <div class="result-row header">
+      <span>Site</span>
+      <span>Score</span>
+    </div>
+
+    <div class="result-row" *ngFor="let r of results">
+      <span>{{ r.site_name }}</span>
+      <span class="score">{{ r.total_score | number:'1.1-1' }}</span>
+    </div>
+
+  </div>
+
 </div>
-
-<p>
-  <strong>Total Weight:</strong>
-  {{ totalWeight | number:'1.2-2' }}
-</p>
-
-<button
-  (click)="analyze()"
-  [disabled]="totalWeight !== 1 || loading"
->
-  {{ loading ? 'Analyzing...' : 'Run Analysis' }}
-</button>
-
-<p *ngIf="errorMessage" style="color:red;">
-  {{ errorMessage }}
-</p>
-
-<hr />
-
-<h3 *ngIf="results.length">Analysis Results</h3>
-
-<table *ngIf="results.length" border="1" cellpadding="6">
-  <tr>
-    <th>Site</th>
-    <th>Total Score</th>
-  </tr>
-  <tr *ngFor="let r of results">
-    <td>{{ r.site_name }}</td>
-    <td>{{ r.total_score }}</td>
-  </tr>
-</table>

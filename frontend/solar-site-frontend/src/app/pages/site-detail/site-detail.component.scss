@@ -1,0 +1,125 @@
+
+
+ .page-title {
+    margin-bottom: 16px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #277e88;
+    text-align: center;
+  }
+ 
+  /* States */
+  .state {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+  }
+  
+  .loading {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+  
+  .error {
+    background: rgba(255, 0, 0, 0.15);
+    color: #ffbdbd;
+  }
+  
+  /* Container */
+  .detail-container {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border-radius: 12px;
+    // color: #277e88;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  
+    h3 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+  
+  /* Score chip */
+  .score-chip {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+  }
+  
+  .excellent {
+    background: #2e7d32;
+  }
+  
+  .good {
+    background: #f9a825;
+    color: #000;
+  }
+  
+  .poor {
+    background: #c62828;
+  }
+  
+  /* Info grid */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    margin-bottom: 99px;
+    font-size: 14px;
+  }
+  
+  /* Section title */
+  .section-title {
+    margin-bottom: 66px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  /* Score cards */
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 14px;
+  }
+  
+  .score-card {
+    background: #33bbff;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+  
+    span {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: #a80000;
+    }
+  
+    strong {
+      font-size: 18px;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  

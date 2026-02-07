@@ -7,7 +7,8 @@ import { RouterModule } from '@angular/router';
   selector: 'app-site-list',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './site-list.component.html'
+  templateUrl: './site-list.component.html',
+  styleUrls: ['./site-list.component.scss']
 })
 export class SiteListComponent implements OnInit {
 

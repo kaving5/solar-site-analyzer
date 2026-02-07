@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import * as L from 'leaflet';
 
 import { SiteService } from '../../core/services/site.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })

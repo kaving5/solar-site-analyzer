@@ -1,20 +1,43 @@
-<h2>Solar Sites</h2>
+<div class="page-header">
 
-<div *ngIf="loading">Loading...</div>
+  <h2 class="page-title">Solar Sites List</h2>
 
-<div *ngIf="errorMessage">{{ errorMessage }}</div>
+  <button class="back-btn" routerLink="/">
+    Back
+  </button>
 
-<table *ngIf="!loading && sites.length">
-  <tr>
-    <th>Name</th>
-    <th>Score</th>
-  </tr>
-<tr *ngFor="let site of sites">
-  <td>
-    <a [routerLink]="['/sites', site.id]">
-      {{ site.site_name }}
-    </a>
-  </td>
-  <td>{{ site.total_score }}</td>
-</tr>
-</table>
+</div>
+
+<div *ngIf="loading" class="state loading">
+  Loading sites...
+</div>
+
+<div *ngIf="errorMessage" class="state error">
+  {{ errorMessage }}
+</div>
+
+<div class="site-table" *ngIf="!loading && sites.length">
+  <div class="table-header">
+    <span>Site Name</span>
+    <span>Suitability</span>
+  </div>
+
+  <div
+    class="table-row"
+    *ngFor="let site of sites"
+    [routerLink]="['/sites', site.id]"
+  >
+    <span class="site-name">{{ site.site_name }}</span>
+
+    <span
+      class="score-badge"
+      [ngClass]="{
+        excellent: site.total_score >= 80,
+        good: site.total_score >= 50 && site.total_score < 80,
+        poor: site.total_score < 50
+      }"
+    >
+      {{ site.total_score }}
+    </span>
+  </div>
+</div>

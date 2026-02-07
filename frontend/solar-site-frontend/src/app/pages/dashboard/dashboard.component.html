@@ -1,33 +1,33 @@
+<div class="page-wrapper">
+  <h2>Solar Site Analyzer Dashboard</h2>
 
-<h2>Solar Site Analyzer Dashboard</h2>
+  <div class="stats-container">
+    <div class="stat-card">
+      <h3>Total Sites</h3>
+      <p>{{ stats?.total_sites }}</p>
+    </div>
 
-<div class="stats-container">
-  <div class="stat-card">
-    <h3>Total Sites</h3>
-    <p>{{ stats?.total_sites }}</p>
+    <div class="stat-card">
+      <h3>Average Score</h3>
+      <p>{{ stats?.average_score }}</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Best Score</h3>
+      <p>{{ stats?.max_score }}</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Worst Score</h3>
+      <p>{{ stats?.min_score }}</p>
+    </div>
   </div>
 
-  <div class="stat-card">
-    <h3>Average Score</h3>
-    <p>{{ stats?.average_score }}</p>
-  </div>
+  <hr />
 
-  <div class="stat-card">
-    <h3>Best Score</h3>
-    <p>{{ stats?.max_score }}</p>
-  </div>
-
-  <div class="stat-card">
-    <h3>Worst Score</h3>
-    <p>{{ stats?.min_score }}</p>
+  <div class="actions">
+    <button class="btn primary" routerLink="/sites">View Sites</button>
+    <button class="btn secondary" routerLink="/analyze">Analyze Weights</button>
+    <button class="btn secondary" routerLink="/map">View Map</button>
   </div>
 </div>
-
-<hr />
-
-<div class="actions">
-  <button class="btn primary" routerLink="/sites">View Sites</button>
-  <button class="btn secondary" routerLink="/analyze">Analyze Weights</button>
-  <button class="btn secondary" routerLink="/map">View Map</button>
-</div>
-
